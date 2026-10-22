@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09090f">
+<title>HENGRA DJ AI — Music Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#09090f;color:#f6f4ff;font-family:Arial,sans-serif}
+header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #292536}
+.logo{font-size:20px;font-weight:900;letter-spacing:1px}
+.logo span{color:#b58aff}
+.tag{font-size:12px;color:#b5adc9}
+main{max-width:760px;margin:55px auto;padding:0 20px}
+h1{text-align:center;font-size:clamp(30px,7vw,48px);margin-bottom:12px}
+h1 span{color:#b58aff}
+.intro{text-align:center;color:#aaa3ba;line-height:1.6;margin-bottom:32px}
+.panel{background:#13121c;border:1px solid #332b45;border-radius:20px;padding:22px}
+label{display:block;font-size:14px;margin:17px 0 9px}
+textarea,select,input{width:100%;padding:14px;border:1px solid #393347;border-radius:12px;background:#0c0b13;color:white;font-size:15px}
+textarea{min-height:125px;resize:vertical}
+button{border:0;border-radius:12px;padding:15px;background:linear-gradient(100deg,#8b5cf6,#d946ef);color:white;font-size:16px;font-weight:bold;width:100%;margin-top:20px;cursor:pointer}
+button:active{opacity:.8}
+.note{font-size:12px;color:#9b94aa;line-height:1.6}
+.result{margin-top:22px;padding:18px;border-radius:14px;background:#0c0b13;border:1px solid #393347}
+footer{text-align:center;color:#8e879f;font-size:12px;padding:35px 15px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">HENGRA <span>DJ AI</span></div>
+  <div class="tag">YOUR MUSIC STUDIO</div>
+</header>
+<main>
+  <h1>Create your <span>sound.</span></h1>
+  <p class="intro">Your ideas. Your style. Your music.<br>Create something original with AI.</p>
+  <section class="panel">
+    <label for="prompt">Describe your song</label>
+    <textarea id="prompt" placeholder="Example: Dark Moroccan Afro House, deep male vocals, heavy bass..."></textarea>
+    <label for="style">Music style</label>
+    <select id="style">
+      <option>Moroccan Afro House</option>
+      <option>Dark Trap</option>
+      <option>Deep House</option>
+      <option>Gnawa Fusion</option>
+      <option>Afrobeats</option>
+      <option>Rap / Hip-Hop</option>
+      <option>Instrumental</option>
+    </select>
+    <label for="lyrics">Lyrics (optional)</label>
+    <textarea id="lyrics" placeholder="Write your own lyrics here..."></textarea>
+    <button onclick="generate()">Generate Music</button>
+    <p class="note">Prototype version. Music generation will be connected in a later step.</p>
+    <div id="result" class="result" hidden></div>
+  </section>
+</main>
+<footer>© 2026 HENGRA DJ AI · Built for music creators</footer>
+<script>
+function generate(){
+ const p=document.getElementById('prompt').value.trim();
+ const s=document.getElementById('style').value;
+ const l=document.getElementById('lyrics').value.trim();
+ const r=document.getElementById('result');
+ r.hidden=false;
+ r.textContent=p
+ ?'Your project is ready to connect. Style: '+s+'. Description: '+p+(l?' · Lyrics added.':'')+' Music generation is not connected yet.'
+ :'Write a description of your song first.';
+}
+</script>
+</body>
+</html>
